@@ -3,7 +3,7 @@ from .models import Article
 import vk_api
 import json
 
-vk_session = vk_api.VkApi('89991380403', 'Ezb4hxd6u7F!')
+vk_session = vk_api.VkApi("#","#")
 vk_session.auth()
 vk = vk_session.get_api()
 
