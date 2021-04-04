@@ -9,7 +9,7 @@ def convert_time(date):
 
 
 def get_info(owner_id, login=None, password=None):
-    if login != None and password != None:
+    if login and password:
         try:
             vk_session = vk_api.VkApi(login, password)
             vk_session.auth()

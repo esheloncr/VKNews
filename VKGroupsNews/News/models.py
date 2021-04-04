@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Article(models.Model):
-    text = models.TextField(verbose_name="Текст поста",null=True)
+    text = models.TextField(verbose_name="Текст поста", null=True)
     image = models.TextField(null=True, verbose_name="Изображение")
     date_published = models.DateTimeField(verbose_name="Дата и время создания поста")
     local_post_link = models.IntegerField(verbose_name="ID поста(локальный)")
@@ -15,4 +15,4 @@ class Article(models.Model):
         verbose_name_plural = "Записи"
 
     def __str__(self):
-        return "Запись"
+        return "Пост"
