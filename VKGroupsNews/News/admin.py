@@ -12,3 +12,5 @@ class ArticleAdmin(admin.ModelAdmin):
         "local_post_link",
         "post_link",
     )
+    list_filter = ("date_published",)
+    search_fields = ("text",)
