@@ -1,5 +1,8 @@
+import json
+
 from django.core.paginator import Paginator
 from django.shortcuts import render, HttpResponse, redirect
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Article
@@ -22,9 +25,14 @@ def parse(request):
     return render(request, "login.html", context={"form":form})
 
 
-def respond(request):
-    # webhook body
-    return redirect("/parse")
+@csrf_exempt
+def hook(request):
+    event = json.loads(request.body.decode("utf-8"))
+    if event["type"] == "wall_post_new":
+        get_info(hook=event)
+    else:
+        print(event)
+    return HttpResponse("ok")
 
 
 class ArticleApiView(APIView):
