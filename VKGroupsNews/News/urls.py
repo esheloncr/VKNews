@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import parse, ArticleApiView, hook
+from .views import hook, parse_group
+from rest_framework.authtoken import views as auth_views
 
 app_name = "News"
 
 urlpatterns = [
-    path("parse", parse),
-    path("api/Article", ArticleApiView.as_view()),
-    path("vk_hook", hook)
+    path("vk_hook", hook),
+    path("parse", parse_group),
+    path(r'auth/', auth_views.obtain_auth_token)
 ]
